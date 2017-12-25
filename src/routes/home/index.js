@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import { connect } from 'react-redux';
+import { appInfo } from '../../map_props';
 import 'semantic-ui-css/semantic.css';
 import {
   Button,
@@ -15,82 +16,14 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 
-const FixedMenu = () => (
-  <Menu fixed='top' size='large'>
-    <Container>
-      <Menu.Item as='a' active>社区</Menu.Item>
-      <Menu.Item as='a'>公告</Menu.Item>
-      <Menu.Item as='a'>博客</Menu.Item>
-      <Menu.Item as='a'>矿机众筹</Menu.Item>
-      <Menu.Menu position='right'>
-        <Menu.Item className='item'>
-          <Button as='a'>登陆</Button>
-        </Menu.Item>
-        <Menu.Item>
-          <Button as='a' primary>注册</Button>
-        </Menu.Item>
-      </Menu.Menu>
-    </Container>
-  </Menu>
-)
-class App extends Component {
-  state = {}
-
-hideFixedMenu = () => this.setState({ visible: false })
-showFixedMenu = () => this.setState({ visible: true })
-
-render() {
-  const { visible } = this.state;
-
-  return (
-    <div>
-      { visible ? <FixedMenu /> : null }
-
-      <Visibility
-        onBottomPassed={this.showFixedMenu}
-        onBottomVisible={this.hideFixedMenu}
-        once={false}
-      >
-        <Segment
-          inverted
-          textAlign='center'
-          style={{ minHeight: 700, padding: '1em 0em' }}
-          vertical
-        >
-          <Container>
-            <Menu inverted pointing secondary size='large'>
-              <Menu.Item as='a' active>社区</Menu.Item>
-              <Menu.Item as='a'>公告</Menu.Item>
-              <Menu.Item as='a'>博客</Menu.Item>
-              <Menu.Item as='a'>矿机众筹</Menu.Item>
-              <Menu.Item position='right'>
-                <Button as='a' inverted>登录</Button>
-                <Button as='a' inverted style={{ marginLeft: '0.5em' }}>注册</Button>
-              </Menu.Item>
-            </Menu>
-          </Container>
-
-          <Container text>
-            <Header
-              as='h1'
-              content='道者'
-              inverted
-              style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
-            />
-            <Header
-              as='h2'
-              content='链上生活社区'
-              inverted
-              style={{ fontSize: '1.7em', fontWeight: 'normal' }}
-            />
-            <Button primary size='huge'>
-              立即加入
-              <Icon name='right arrow' />
-            </Button>
-          </Container>
-        </Segment>
-      </Visibility>
-
+class HomePage extends Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount(){}
+  render(){
+    return (
+      <div>
       <Segment style={{ padding: '8em 0em' }} vertical>
         <Grid container stackable verticalAlign='middle'>
           <Grid.Row>
@@ -192,9 +125,9 @@ render() {
           </Grid>
         </Container>
       </Segment>
-    </div>
-  )
+      </div>
+    )
   }
 }
 
-export default App;
+export default connect(appInfo)(HomePage);
