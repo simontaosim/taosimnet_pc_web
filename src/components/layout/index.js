@@ -17,6 +17,7 @@ import {
   Visibility,
 } from 'semantic-ui-react'
 import HomeBanner from '../home/banner';
+import Footer from './footer';
 
 
 class Layout extends Component {
@@ -33,6 +34,7 @@ render() {
       <HomeBanner history={this.props.history}/>
 
       {this.props.children}
+      <Footer  history={this.props.history} />
     </div>
   )
   }

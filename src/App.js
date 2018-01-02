@@ -36,7 +36,7 @@ const FixedMenu = () => (
 class App extends Component {
   state = {}
 
-hideFixedMenu = () => this.setState({ visible: false })
+ = () => this.setState({ visible: false })
 showFixedMenu = () => this.setState({ visible: true })
 
 render() {
@@ -48,7 +48,7 @@ render() {
 
       <Visibility
         onBottomPassed={this.showFixedMenu}
-        onBottomVisible={this.hideFixedMenu}
+        onBottomVisible={this.}
         once={false}
       >
         <Segment

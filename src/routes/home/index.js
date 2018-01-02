@@ -14,8 +14,8 @@ import {
   Menu,
   Segment,
   Visibility,
-} from 'semantic-ui-react'
-
+} from 'semantic-ui-react';
+import './index.css';
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -53,11 +53,13 @@ class HomePage extends Component {
           </Grid.Row>
         </Grid>
       </Segment>
-      <Segment style={{ padding: '0em' }} vertical>
+      <Segment style={{ padding: '0em' }}>
         <Grid celled='internally' columns='equal' stackable>
           <Grid.Row textAlign='center'>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-              <Header as='h3' style={{ fontSize: '2em' }}><a>查看所有社区版块</a></Header>
+              <Header onClick={()=>{
+                this.props.history.push('/taos')
+              }} className="check-all-taos" as='h3' style={{ fontSize: '2em' }}><a>查看所有社区频道</a></Header>
             </Grid.Column>
             <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
               <Header as='h3' style={{ fontSize: '2em' }}><a>进入个人中心</a></Header>
@@ -95,36 +97,7 @@ class HomePage extends Component {
           <Button as='a' size='large'>继续阅读</Button>
         </Container>
       </Segment>
-      <Segment inverted vertical style={{ padding: '5em 0em' }}>
-        <Container>
-          <Grid divided inverted stackable>
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='关于' />
-                <List link inverted>
-                  <List.Item as='a'>开发路线图</List.Item>
-                  <List.Item as='a'>联系方式</List.Item>
-                  <List.Item as='a'>理念</List.Item>
-                  <List.Item as='a'>官方博客</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={3}>
-                <Header inverted as='h4' content='反馈' />
-                <List link inverted>
-                  <List.Item as='a'>体验报告</List.Item>
-                  <List.Item as='a'>常见 FAQ</List.Item>
-                  <List.Item as='a'>出错提交</List.Item>
-                  <List.Item as='a'>商务合作</List.Item>
-                </List>
-              </Grid.Column>
-              <Grid.Column width={7}>
-                <Header as='h4' inverted>版权</Header>
-                <p>https://github.com/simontaosim/taosimnet_pc_web</p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </Segment>
+
       </div>
     )
   }

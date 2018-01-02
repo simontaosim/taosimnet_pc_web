@@ -30,6 +30,7 @@ class HomeBanner extends Component {
     }
   }
   componentDidMount(){
+
     if (this.isHome()) {
       this.setState({
         visible: false
@@ -76,18 +77,31 @@ class HomeBanner extends Component {
     const FixedMenu = () => (
       <Menu fixed='top' size='large'>
         <Container>
+        <Menu.Item as='a' active onClick={()=>{
+          this.props.history.push('/')
+        }}>首页</Menu.Item>
           <Menu.Item as='a' active onClick={()=>{
-            this.props.history.push('/')
-          }}>社区</Menu.Item>
-          <Menu.Item as='a'>公告</Menu.Item>
-          <Menu.Item as='a'>博客</Menu.Item>
-          <Menu.Item as='a'>矿机众筹</Menu.Item>
+            this.props.history.push('/taos')
+          }}>社区频道</Menu.Item>
+          <Menu.Item as='a'onClick={()=>{
+            this.props.history.push('/board')
+          }}>公告</Menu.Item>
+          <Menu.Item onClick={()=>{
+            this.props.history.push('/blog')
+          }} as='a'>博客</Menu.Item>
+          <Menu.Item onClick={()=>{
+            this.props.history.push('/miner')
+          }} as='a'>矿机众筹</Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item className='item'>
-              <Button as='a'>登陆</Button>
+              <Button  onClick={()=>{
+                this.props.history.push('/login')
+              }} as='a'>登陆</Button>
             </Menu.Item>
             <Menu.Item>
-              <Button as='a' primary>注册</Button>
+              <Button  onClick={()=>{
+                this.props.history.push('/reg')
+              }} as='a' primary>注册</Button>
             </Menu.Item>
           </Menu.Menu>
         </Container>
@@ -115,13 +129,21 @@ class HomeBanner extends Component {
                 this.props.history.push('/')
               }}>社区</Menu.Item>
               <Menu.Item as='a' onClick={()=>{
-                this.props.history.push('/about')
+                this.props.history.push('/board')
               }}>公告</Menu.Item>
-              <Menu.Item as='a'>博客</Menu.Item>
-              <Menu.Item as='a'>矿机众筹</Menu.Item>
+              <Menu.Item onClick={()=>{
+                this.props.history.push('/blog')
+              }} as='a'>博客</Menu.Item>
+              <Menu.Item as='a' onClick={()=>{
+                this.props.history.push('/miner')
+              }}>矿机众筹</Menu.Item>
               <Menu.Item position='right'>
-                <Button as='a' inverted>登录</Button>
-                <Button as='a' inverted style={{ marginLeft: '0.5em' }}>注册</Button>
+                <Button onClick={()=>{
+                  this.props.history.push('/login')
+                }} as='a' inverted>登录</Button>
+                <Button onClick={()=>{
+                  this.props.history.push('/reg')
+                }} as='a' inverted style={{ marginLeft: '0.5em' }}>注册</Button>
               </Menu.Item>
             </Menu>
           </Container>
@@ -139,7 +161,9 @@ class HomeBanner extends Component {
               inverted
               style={{ fontSize: '1.7em', fontWeight: 'normal' }}
             />
-            <Button primary size='huge'>
+            <Button  onClick={()=>{
+              this.props.history.push('/reg')
+            }} primary size='huge' >
               立即加入
               <Icon name='right arrow' />
             </Button>
