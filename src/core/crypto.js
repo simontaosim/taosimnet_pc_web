@@ -44,12 +44,27 @@ let block = {
   id: 123,
   privateKey: blockKey.exportKey('private'),
   lastPublicKey: lastBlockKey.exportKey('public'),
-
   base64,
   lastBlock: 122,
 }
 let lastBlock = {
   id: 122,
+  privateKey: lastBlockKey.exportKey('private'),
+}
+let initBlockKey = new NodeRSA({b:512})
+let initBlock = {
+  id: 1,
+  privateKey: initBlockKey.exportKey('private');
+  lastPublicKey: null,
+  publicKey: initBlockKey.exportKey('public');
+  lastBlock: null,
+  status: 'unconfirmed',
+  count: 1,
+  createdAt: new Date(),
+}
+let nextBlock = {
+  id: 2,
+
 }
 //需要证明一条内容是一个区块的(公钥证明)
 // let blockKey = new NodeRSA({b: 512});
