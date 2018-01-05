@@ -39,7 +39,7 @@ let contentPrivateRsa = newContentKey.exportKey('private');
 //需要证明这个区块是上一个区块的下一个区块
 let blockKey = new NodeRSA({b: 512});
 let lastBlockKey = new NodeRSA({b:512});
-let base64 = blockKey.encrypted(123, 'base64');
+let base64 = blockKey.encrypt('123', 'base64');
 let block = {
   id: 123,
   privateKey: blockKey.exportKey('private'),
@@ -51,14 +51,20 @@ let lastBlock = {
   id: 122,
   privateKey: lastBlockKey.exportKey('private'),
 }
-let initBlockKey = new NodeRSA({b:512})
+let initBlockKey = new NodeRSA({b:512});
+hashValue = initBlockKey.encrypt(new Date(), 'base64');
+
+let crypto = require('crypto');
 let initBlock = {
-  id: 1,
-  privateKey: initBlockKey.exportKey('private');
+  privateKey: initBlockKey.exportKey('private'),
   lastPublicKey: null,
-  publicKey: initBlockKey.exportKey('public');
+  publicKey: initBlockKey.exportKey('public'),
+  hashValue,
   lastBlock: null,
   status: 'unconfirmed',
+  confirmed: 1,
+  vote: 1,
+  volume: 1,
   count: 1,
   createdAt: new Date(),
 }
@@ -66,6 +72,7 @@ let nextBlock = {
   id: 2,
 
 }
+console.log(initBlock);
 //需要证明一条内容是一个区块的(公钥证明)
 // let blockKey = new NodeRSA({b: 512});
 // console.log('将内容的公钥导入区块中');
