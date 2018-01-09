@@ -18,6 +18,18 @@ import {
 } from 'semantic-ui-react'
 import HomeBanner from '../home/banner';
 import Footer from './footer';
+import MerkleTree from '../../core/MerkleTree.js';
+
+let tree = new MerkleTree();
+console.log(tree.getRoot());
+console.log(tree.getLevel());
+
+tree.addContent("这是一个内容0");
+tree.addContent("这是一个内容1");
+tree.addContent("这是一个内容2");
+// tree.addContent("这是一个内容3");
+console.log(tree.getTree());
+
 
 
 class Layout extends Component {
